@@ -110,22 +110,7 @@ function cleanupOldFiles() {
 
 // 根路由
 app.get("/", function(req, res) {
-  // 假设 index.html 和 index.js 在同一目录下
-  const htmlPath = path.join(__dirname, 'index.html');
-  
-  try {
-    // 同步读取 index.html 文件内容
-    const htmlContent = fs.readFileSync(htmlPath, 'utf-8');
-    
-    // 设置响应头为 HTML，并发送文件内容
-    res.set('Content-Type', 'text/html; charset=utf-8');
-    res.send(htmlContent);
-    
-  } catch (error) {
-    // 如果读取文件失败，发送 500 错误
-    console.error('Error reading index.html:', error);
-    res.status(500).send('Error loading index.html');
-  }
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // 生成xr-ay配置文件
