@@ -3,169 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>游戏咨询</title>
+    <title>爱护动物，保护环境</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            color: #333;
         }
         header {
-            background-color: #333;
+            background-color: #4CAF50;
             color: white;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
         }
+        header h1 {
+            margin: 0;
+        }
         nav {
-            background-color: #444;
-            color: white;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
+            background-color: #333;
+            overflow: hidden;
         }
         nav a {
             color: white;
-            margin: 0 15px;
+            padding: 14px 20px;
             text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
         nav a:hover {
-            text-decoration: underline;
+            background-color: #ddd;
+            color: black;
         }
         .content {
             padding: 20px;
         }
-        .game-category {
-            margin-bottom: 20px;
+        .section {
+            margin-bottom: 40px;
         }
-        .game-category h2 {
-            background-color: #333;
-            color: white;
-            padding: 10px;
+        .section h2 {
+            color: #4CAF50;
+        }
+        .section p {
+            font-size: 1.1em;
+            line-height: 1.6em;
+        }
+        .call-to-action {
             text-align: center;
+            margin-top: 30px;
         }
-        .game-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .game-item {
-            background-color: #fff;
-            border-radius: 5px;
-            width: 30%;
-            margin: 10px;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .game-item h3 {
+        .call-to-action button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
             font-size: 1.2em;
-            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .game-item p {
-            font-size: 0.9em;
-            color: #555;
+        .call-to-action button:hover {
+            background-color: #45a049;
         }
         footer {
-            text-align: center;
-            padding: 10px;
             background-color: #333;
             color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .section img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .video-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .form-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .form-container input, .form-container textarea {
+            padding: 10px;
+            width: 80%;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>游戏咨询中心</h1>
-    <p>欢迎来到我们的游戏咨询网站，获取各类游戏的最新资讯与帮助！</p>
+    <h1>爱护动物，保护环境</h1>
+    <p>让我们一起为地球的未来而努力</p>
 </header>
 
 <nav>
-    <a href="#action">动作游戏</a>
-    <a href="#strategy">策略游戏</a>
-    <a href="#rpg">角色扮演游戏</a>
-    <a href="#sports">体育游戏</a>
+    <a href="#animal-protection">动物保护</a>
+    <a href="#environment-protection">环境保护</a>
+    <a href="#take-action">行动起来</a>
 </nav>
 
 <div class="content">
 
-    <div id="action" class="game-category">
-        <h2>动作游戏</h2>
-        <div class="game-list">
-            <div class="game-item">
-                <h3>刺客信条</h3>
-                <p>一款结合潜行和战斗的开放世界动作游戏，玩家将体验各种历史背景的冒险。</p>
-            </div>
-            <div class="game-item">
-                <h3>鬼泣5</h3>
-                <p>战斗流畅，动作感十足的动作游戏，玩家将与恶魔对抗，拯救世界。</p>
-            </div>
-            <div class="game-item">
-                <h3>恶魔之魂</h3>
-                <p>黑暗幻想世界中的动作冒险游戏，以极高的难度和战斗设计而闻名。</p>
-            </div>
+    <div id="animal-protection" class="section">
+        <h2>动物保护</h2>
+        <div id="animal-content">
+            <!-- 动态加载动物保护内容 -->
+            <p>正在加载动物保护信息...</p>
+        </div>
+        
+        <div class="video-container" id="animal-video-container">
+            <!-- 动态加载视频 -->
         </div>
     </div>
 
-    <div id="strategy" class="game-category">
-        <h2>策略游戏</h2>
-        <div class="game-list">
-            <div class="game-item">
-                <h3>文明VI</h3>
-                <p>一款回合制策略游戏，玩家可以创建和管理自己的文明，征服世界。</p>
-            </div>
-            <div class="game-item">
-                <h3>星际争霸II</h3>
-                <p>经典的即时战略游戏，玩家可以选择不同的种族进行战斗与资源管理。</p>
-            </div>
-            <div class="game-item">
-                <h3>三国志14</h3>
-                <p>基于中国三国时期的历史，进行战略战争和城市管理的模拟游戏。</p>
-            </div>
+    <div id="environment-protection" class="section">
+        <h2>环境保护</h2>
+        <div id="environment-content">
+            <!-- 动态加载环境保护内容 -->
+            <p>正在加载环境保护信息...</p>
+        </div>
+        
+        <div class="video-container" id="environment-video-container">
+            <!-- 动态加载视频 -->
         </div>
     </div>
 
-    <div id="rpg" class="game-category">
-        <h2>角色扮演游戏</h2>
-        <div class="game-list">
-            <div class="game-item">
-                <h3>巫师3：狂猎</h3>
-                <p>开放世界RPG游戏，玩家将扮演猎魔人杰洛特，探索广阔的游戏世界。</p>
-            </div>
-            <div class="game-item">
-                <h3>上古卷轴V：天际</h3>
-                <p>著名的RPG游戏，玩家可以自由探索广袤的世界，进行冒险与战斗。</p>
-            </div>
-            <div class="game-item">
-                <h3>黑暗之魂III</h3>
-                <p>以极具挑战性的战斗和深刻的故事情节为特点，玩家将在黑暗的世界中冒险。</p>
-            </div>
+    <div id="take-action" class="section">
+        <h2>行动起来</h2>
+        <p>保护动物和环境是每个人的责任。从日常生活中做起，减少浪费、选择环保产品，支持动物保护事业和环境保护项目。每一个小小的行动都能带来改变。</p>
+        
+        <div class="call-to-action">
+            <button onclick="alert('谢谢您的支持！一起为保护地球贡献力量！')">立即行动</button>
         </div>
-    </div>
+        
+        <div class="form-container">
+            <h3>填写您的环保承诺</h3>
+            <form id="commitment-form">
+                <input type="text" name="name" placeholder="请输入您的姓名" required />
+                <textarea name="commitment" placeholder="请输入您的环保承诺" rows="4" required></textarea>
+                <button type="submit">提交承诺</button>
+            </form>
+        </div>
 
-    <div id="sports" class="game-category">
-        <h2>体育游戏</h2>
-        <div class="game-list">
-            <div class="game-item">
-                <h3>FIFA 23</h3>
-                <p>全球最受欢迎的足球游戏，玩家可以体验真实的足球比赛与管理。</p>
-            </div>
-            <div class="game-item">
-                <h3>NBA 2K23</h3>
-                <p>以篮球为主题的体育游戏，提供真实的比赛体验与球队管理。</p>
-            </div>
-            <div class="game-item">
-                <h3>马里奥网球</h3>
-                <p>一款结合趣味和竞技的网球游戏，适合全家人一起玩。</p>
-            </div>
+        <div class="form-container">
+            <h3>推荐环保组织</h3>
+            <ul id="organization-list">
+                <!-- 动态加载环保组织列表 -->
+            </ul>
         </div>
     </div>
 
 </div>
 
 <footer>
-    <p>© 2025 游戏咨询平台 - 所有权利保留</p>
+    <p>© 2025 爱护动物，保护环境平台 - 所有权利保留</p>
 </footer>
+
+<script>
+// 动态加载动物保护内容
+function loadAnimalProtectionContent() {
+    const animalContent = `
+        <p>动物是地球生态系统的重要组成部分。它们不仅为我们提供食物和药物，还在生态系统中起着平衡作用。随着人类活动的不断扩张，越来越多的动物面临着栖息地丧失、非法猎杀和环境污染等威胁。我们每个人都应该关注动物保护问题，避免购买野生动物制品，支持野生动物保护组织，尊重所有生物的生存权。</p>
+        <img src="https://example.com/animal-protection-image.jpg" alt="动物保护" />
+    `;
+    document.getElementById("animal-content").innerHTML = animalContent;
+
+    const animalVideo = `
+        <h3>动物保护视频</h3>
+        <video width="600" controls>
+            <source src="https://example.com/animal-protection-video.mp4" type="video/mp4">
+            您的浏览器不支持 video 标签。
+        </video>
+    `;
+    document.getElementById("animal-video-container").innerHTML = animalVideo;
+}
+
+// 动态加载环境保护内容
+function loadEnvironmentProtectionContent() {
+    const environmentContent = `
+        <p>环境保护是当今世界面临的一个重大问题。随着工业化进程的加速，空气污染、水污染和土地荒漠化等环境问题日益严重。我们每个人都应该采取行动，减少资源浪费，减少塑料使用，支持绿色能源，并积极参与环保活动。保护环境不仅是对地球的爱，也是对未来世代的责任。</p>
+        <img src="https://example.com/environment-protection-image.jpg" alt="环境保护" />
+    `;
+    document.getElementById("environment-content").innerHTML = environmentContent;
+
+    const environmentVideo = `
+        <h3>环境保护视频</h3>
+        <video width="600" controls>
+            <source src="https://example.com/environment-protection-video.mp4" type="video/mp4">
+            您的浏览器不支持 video 标签。
+        </video>
+    `;
+    document.getElementById("environment-video-container").innerHTML = environmentVideo;
+}
+
+// 动态加载环保组织列表
+function loadOrganizations() {
+    const organizations = [
+        { name: "世界野生动物基金会", url: "https://www.worldwildlife.org/" },
+        { name: "绿色和平组织", url: "https://www.greenpeace.org/cn/" },
+        { name: "自然保护协会", url: "https://www.nature.org/zh-cn/" }
+    ];
+
+    const listContainer = document.getElementById("organization-list");
+    organizations.forEach(org => {
+        const listItem = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = org.url;
+        link.target = "_blank";
+        link.textContent = org.name;
+        listItem.appendChild(link);
+        listContainer.appendChild(listItem);
+    });
+}
+
+// 提交表单数据
+document.getElementById("commitment-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const commitment = event.target.commitment.value;
+    alert(`感谢${name}的环保承诺！我们一起为地球出力！\n承诺内容：${commitment}`);
+});
+
+// 页面加载时执行的动态内容加载
+window.onload = function() {
+    loadAnimalProtectionContent();
+    loadEnvironmentProtectionContent();
+    loadOrganizations();
+};
+</script>
 
 </body>
 </html>
