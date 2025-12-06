@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏联盟爱好者中心 - 英雄联盟粉丝聚集地</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #0a1428;
+            --secondary-color: #1e2a4a;
+            --accent-color: #c89b3c;
+            --text-color: #f0e6d2;
+            --text-secondary: #a09b8c;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: linear-gradient(rgba(10, 20, 40, 0.9), rgba(10, 20, 40, 0.9)), 
+                              url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: rgba(10, 20, 40, 0.95);
+            padding: 20px 0;
+            border-bottom: 3px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+            background: linear-gradient(to right, #c89b3c, #785a28);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        /* 英雄展示区 */
+        .hero-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-secondary);
+        }
+        
+        .hero-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .hero-card {
+            background-color: rgba(30, 42, 74, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-info {
+            padding: 20px;
+        }
+        
+        .hero-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .hero-info p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        
+        .role {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* 新闻区域 */
+        .news-section {
+            padding: 60px 0;
+            background-color: rgba(10, 20, 40, 0.7);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--accent-color);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: rgba(30, 42, 74, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(200, 155, 60, 0.2);
+        }
+        
+        .news-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: var(--text-color);
+        }
+        
+        .news-date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        /* 数据统计区 */
+        .stats-section {
+            padding: 60px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            background-color: rgba(30, 42, 74, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            background-color: rgba(30, 42, 74, 1);
+            transform: translateY(-5px);
+        }
+        
+        .stat-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .stat-card h3 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-card p {
+            color: var(--text-secondary);
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: rgba(10, 20, 40, 0.95);
+            padding: 40px 0;
+            border-top: 3px solid var(--accent-color);
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-section p, .footer-section li {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--secondary-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-section h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-cards, .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <h1>游戏联盟爱好者中心</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">首页</a></li>
+                        <li><a href="#">英雄图鉴</a></li>
+                        <li><a href="#">赛事资讯</a></li>
+                        <li><a href="#">攻略指南</a></li>
+                        <li><a href="#">社区交流</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄展示区 -->
+    <section class="hero-section">
+        <div class="container">
+            <h2>英雄联盟热门英雄</h2>
+            <p>探索召唤师峡谷中最受欢迎的英雄，了解他们的技能、玩法和战术定位。</p>
+            
+            <div class="hero-cards">
+                <div class="hero-card">
+                    <div class="hero-img" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="hero-info">
+                        <h3>疾风剑豪 - 亚索</h3>
+                        <p>一位追求真正剑道的艾欧尼亚剑客，以飘逸的技能和超高的操作上限著称。</p>
+                        <span class="role">战士 / 刺客</span>
+                    </div>
+                </div>
+                
+                <div class="hero-card">
+                    <div class="hero-img" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="hero-info">
+                        <h3>暗夜猎手 - 薇恩</h3>
+                        <p>以狩猎黑暗生物为生的冷酷猎手，拥有极高的单体伤害和灵活的位移能力。</p>
+                        <span class="role">射手</span>
+                    </div>
+                </div>
+                
+                <div class="hero-card">
+                    <div class="hero-img" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');"></div>
+                    <div class="hero-info">
+                        <h3>符文法师 - 瑞兹</h3>
+                        <p>一位古老的魔法师，致力于保护符文之地免受魔法能量的侵害。</p>
+                        <span class="role">法师</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新闻资讯区 -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">最新赛事资讯</h2>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="news-content">
+                        <span class="news-date">2023年10月15日</span>
+                        <h3>全球总决赛四强赛即将开战</h3>
+                        <p>今年的全球总决赛进入白热化阶段，四支顶级战队将角逐最终决赛名额。LCK赛区与LPL赛区的对决备受期待。</p>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="news-content">
+                        <span class="news-date">2023年10月10日</span>
+                        <h3>新英雄"明烛"正式上线</h3>
+                        <p>来自艾欧尼亚的辅助型法师"明烛"已加入召唤师峡谷，独特的技能机制将为下路对线带来新的变化。</p>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');"></div>
+                    <div class="news-content">
+                        <span class="news-date">2023年10月5日</span>
+                        <h3>13.20版本平衡性调整公告</h3>
+                        <p>最新版本中，多位强势英雄遭到削弱，装备系统也有重大调整。了解版本动态，掌握上分先机。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据统计区 -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title">联盟数据统计</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3>1.8亿+</h3>
+                    <p>全球月活跃玩家</p>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>160+</h3>
+                    <p>可玩英雄数量</p>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>12</h3>
+                    <p>全球总决赛已举办届数</p>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>20+</h3>
+                    <p>全球职业联赛赛区</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <p>游戏联盟爱好者中心是英雄联盟粉丝的聚集地，我们提供最新的游戏资讯、英雄攻略、赛事数据和社区交流平台。</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-qq"></i></a>
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-bilibili"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#">英雄数据库</a></li>
+                        <li><a href="#">赛事日历</a></li>
+                        <li><a href="#">攻略合集</a></li>
+                        <li><a href="#">玩家社区</a></li>
+                        <li><a href="#">下载资源</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <p><i class="fas fa-envelope"></i> contact@gamerleaguefan.com</p>
+                    <p><i class="fas fa-phone"></i> +86 400-123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 上海市浦东新区电竞路123号</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 游戏联盟爱好者中心. 保留所有权利. 本网站与Riot Games无关，所有游戏内容版权归其各自所有者所有。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航栏活跃状态切换
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 平滑滚动到对应区域
+                    const sectionId = this.getAttribute('href');
+                    if(sectionId !== '#') {
+                        const targetSection = document.querySelector(sectionId);
+                        if(targetSection) {
+                            window.scrollTo({
+                                top: targetSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // 卡片悬停效果增强
+            const cards = document.querySelectorAll('.hero-card, .news-card, .stat-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const allCards = document.querySelectorAll('.hero-card, .news-card, .stat-card');
+                    allCards.forEach(c => {
+                        if(c !== this) {
+                            c.style.opacity = '0.8';
+                            c.style.transform = 'scale(0.98)';
+                        }
+                    });
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const allCards = document.querySelectorAll('.hero-card, .news-card, .stat-card');
+                    allCards.forEach(c => {
+                        c.style.opacity = '1';
+                        c.style.transform = 'scale(1)';
+                    });
+                });
+            });
+            
+            // 页面加载动画
+            const heroCards = document.querySelectorAll('.hero-card');
+            heroCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s, transform 0.5s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 + (index * 200));
+            });
+        });
+    </script>
+</body>
+</html>
